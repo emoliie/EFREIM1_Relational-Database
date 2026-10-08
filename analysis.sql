@@ -319,6 +319,47 @@ ORDER BY chiffre_affaires DESC
 LIMIT 10;
 
 
+-- D. Synthese mensuelle
+-- On supprime la table si elle existe deja, pour pouvoir relancer le fichier
+DROP TABLE IF EXISTS synthese_mensuelle;
+
+CREATE TABLE synthese_mensuelle AS
+SELECT
+    EXTRACT(YEAR FROM c.date_commande) AS annee,
+    EXTRACT(MONTH FROM c.date_commande) AS mois,
+    COUNT(DISTINCT c.id) AS nb_commandes,
+    ROUND(SUM(lc.quantite * lc.prix_unitaire)::numeric, 2) AS chiffre_affaires,
+    ROUND((SUM(lc.quantite * lc.prix_unitaire) / COUNT(DISTINCT c.id))::numeric, 2) AS panier_moyen
+FROM commande c
+INNER JOIN ligne_commande lc
+    ON lc.commande_id = c.id
+WHERE c.statut <> 'annulée'
+GROUP BY
+    EXTRACT(YEAR FROM c.date_commande),
+    EXTRACT(MONTH FROM c.date_commande);
+
+SELECT *
+FROM synthese_mensuelle
+ORDER BY annee, mois;
+
+/*
+Cette table resume l'activite mois par mois en trois indicateurs. Elle permet
+de voir d'un coup d'oeil si les ventes progressent ou reculent, et de reperer
+les mois forts et les mois faibles.
+
+Ce que la table permet d'observer :
+- les mois les plus forts sont mai, aout et decembre, les plus faibles
+  janvier, avril et septembre ;
+- le second semestre (327 657,55 EUR) depasse le premier (289 837,21 EUR)
+  d'environ 13 % ;
+- le chiffre d'affaires depend du nombre de commandes et du panier moyen :
+  le nombre de commandes est presque le meme sur les deux semestres
+  (244 puis 240), donc la hausse vient surtout de paniers plus eleves.
+  Octobre le montre bien : peu de commandes (34), mais le panier moyen
+  le plus haut de l'annee (1 578,81 EUR).
+*/
+
+
 -- =====================================================================
 -- PARTIE 7 - ANALYSE LIBRE
 -- =====================================================================
