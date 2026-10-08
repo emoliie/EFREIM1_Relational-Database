@@ -88,17 +88,64 @@ Les relations sont assurées par des clés étrangères : une commande appartien
 
 ## Principales conclusions
 
+La base contient 100 clients, 65 produits, 500 commandes et 1 547 lignes de commande. Les commandes couvrent toute l'année 2025, du 1er janvier au 29 décembre.
+
 ### Activité générale
 
-*À compléter avec les résultats des exercices 10, 12 et 15 : chiffre d'affaires total, nombre de commandes, panier moyen, taux d'annulation, mois les plus forts et les plus faibles.*
+| Indicateur | Valeur |
+|---|---|
+| Chiffre d'affaires (hors annulations) | 617 494,76 € |
+| Nombre de commandes (hors annulations) | 484 |
+| Panier moyen | 1 275,82 € |
+| Clients actifs | 90 sur 100 |
+| Taux d'annulation | 3,20 % (16 commandes sur 500) |
+
+Le taux d'annulation est faible : plus de la moitié des commandes (279) sont déjà livrées.
+
+Les commandes se répartissent en 103 petits paniers (moins de 500 €), 206 paniers moyens (de 500 € à moins de 1 500 €) et 191 gros paniers (1 500 € ou plus). Les paniers moyens et gros représentent donc près de 80 % des commandes.
+
+### Évolution dans l'année
+
+| Mois | Commandes | Chiffre d'affaires | Panier moyen |
+|---|---:|---:|---:|
+| Janvier | 29 | 34 765,36 € | 1 198,81 € |
+| Février | 44 | 44 673,74 € | 1 015,31 € |
+| Mars | 37 | 46 841,99 € | 1 266,00 € |
+| Avril | 34 | 35 932,15 € | 1 056,83 € |
+| Mai | 54 | 68 841,64 € | 1 274,85 € |
+| Juin | 46 | 58 782,33 € | 1 277,88 € |
+| Juillet | 38 | 55 406,98 € | 1 458,08 € |
+| Août | 50 | 65 441,63 € | 1 308,83 € |
+| Septembre | 36 | 40 578,54 € | 1 127,18 € |
+| Octobre | 34 | 53 679,61 € | 1 578,81 € |
+| Novembre | 40 | 51 895,45 € | 1 297,39 € |
+| Décembre | 42 | 60 655,34 € | 1 444,17 € |
+
+- **Mois les plus forts :** mai (68 841,64 €, avec le plus grand nombre de commandes) et août (65 441,63 €).
+- **Mois les plus faibles :** janvier (34 765,36 €) et avril (35 932,15 €).
+- **Tendance générale :** le second semestre rapporte environ 13 % de plus que le premier (327 657,55 € contre 289 837,21 €), alors que le nombre de commandes est presque le même (240 contre 244). La hausse vient donc surtout de paniers plus élevés. Octobre en est le meilleur exemple : peu de commandes (34), mais le panier moyen le plus haut de l'année (1 578,81 €).
 
 ### Produits et catégories
 
-*À compléter avec les résultats des exercices 6, 7, 8 et 14 : catégories et produits qui génèrent le plus de chiffre d'affaires, produits jamais vendus.*
+| Catégorie | Chiffre d'affaires | Part du CA | Quantité vendue |
+|---|---:|---:|---:|
+| Sport | 162 149,83 € | 26,3 % | 780 |
+| Informatique | 138 024,98 € | 22,4 % | 1 051 |
+| Mode | 124 202,00 € | 20,1 % | 753 |
+| Maison | 111 359,19 € | 18,0 % | 727 |
+| Audio | 81 758,76 € | 13,2 % | 490 |
+
+- **Sport** est la catégorie qui rapporte le plus. **Informatique** est celle qui vend le plus d'unités, mais à un prix moyen plus bas, ce qui la place en deuxième position en chiffre d'affaires.
+- **Produits les plus vendus en quantité :** Montre sport 1 (101 unités), puis Casque 1 et Écran 2 (94 unités chacun).
+- **Produits qui rapportent le plus :** Sac à dos 1 (24 925,47 €), Gourde 1 (23 589,49 €) et Écouteurs 1 (21 678,00 €). Les produits les plus vendus ne sont donc pas forcément ceux qui rapportent le plus.
+- **Clients qui rapportent le plus :** Alice Dubois (Nice, 11 commandes, 17 169,00 €), Sarah Bernard (Paris, 15 432,22 €) et Nathan Bernard (Lyon, 15 324,36 €).
+- **Produits jamais vendus :** 5 produits, un par catégorie : Chemise 1, Corde à sauter 1, Platine vinyle 1, Imprimante 1 et Grille-pain 1. Ils immobilisent 325 unités en stock. Ce sont les cinq derniers produits ajoutés au catalogue (identifiants 61 à 65) : il peut s'agir de nouveautés, ou de produits à mettre en avant ou à retirer.
 
 ### Qualité des données
 
-*À compléter avec les résultats de l'exercice 13 : nombre de commandes datées avant l'inscription du client.*
+- **Commandes antérieures à l'inscription :** 30 commandes, réparties sur 12 clients, sont datées avant la date d'inscription du client, de 2 à 194 jours avant. C'est impossible dans la réalité : soit la date d'inscription est fausse, soit la date de commande l'est. Ces anomalies sont à corriger à la source.
+- **Valeurs manquantes :** aucune. Toutes les colonnes sont renseignées, y compris la catégorie des produits, qui n'est pas obligatoire dans le schéma.
+- **Clients sans commande :** 10 clients inscrits n'ont jamais passé de commande. Ce n'est pas une erreur, mais une information utile pour les relancer.
 
 ### Analyses libres (partie 7)
 
