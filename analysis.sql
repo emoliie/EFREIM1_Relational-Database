@@ -29,8 +29,12 @@ GROUP BY c.id
 ORDER BY c.id;
 
 -- EXERCICE 6
-SELECT p.*categorie, SUM(lc.quantite * lc.prix_unitaire) AS prix_total
+SELECT p.categorie, 
+    ROUND(SUM(lc.quantite * lc.prix_unitaire)::numeric, 2) AS chiffre_affaires,
+    SUM(lc.quantite) AS quantite_totale
 FROM produit p
 INNER JOIN ligne_commande lc
-ON p.id = lc.produit_id
-GROUP BY categorie;
+    ON p.id = lc.produit_id
+GROUP BY p.categorie
+ORDER BY chiffre_affaires DESC;
+
